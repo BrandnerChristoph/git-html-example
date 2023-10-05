@@ -22,24 +22,7 @@
     <p>Sehen Sie sich den Quellcode dieser Seite an.</p>
 
     <button onclick="loadRecipes()">Vorschlag laden</button>
+    <div id="suggestTxt"></div>
 
   </body>
 </html>
-
-<script>
-  var allQuestions = new Array();
-    
-    function loadRecipesOld() {
-        $.getJSON('recipes.json',  function (data) {
-          allQuestions = data.Name;
-        })
-        .error(function() {
-            console.log('error: JSON not loaded'); 
-        })
-        .done(function() {
-            console.log( "JSON loaded!" );
-            printQuestion(allQuestions[0]); 
-        });
-        alert(allQuestions[0].Name)
-    }
-</script>
