@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kantine HTL Waidhofen/Ybbs</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="recipe.js"></script> 
   </head>
   <body>
     <ul class="my-nav">
@@ -18,5 +20,26 @@
     </ul>
     <!-- Sichtbarer Dokumentinhalt im body -->
     <p>Sehen Sie sich den Quellcode dieser Seite an.</p>
+
+    <button onclick="loadRecipes()">Vorschlag laden</button>
+
   </body>
 </html>
+
+<script>
+  var allQuestions = new Array();
+    
+    function loadRecipesOld() {
+        $.getJSON('recipes.json',  function (data) {
+          allQuestions = data.Name;
+        })
+        .error(function() {
+            console.log('error: JSON not loaded'); 
+        })
+        .done(function() {
+            console.log( "JSON loaded!" );
+            printQuestion(allQuestions[0]); 
+        });
+        alert(allQuestions[0].Name)
+    }
+</script>
